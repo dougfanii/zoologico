@@ -1,0 +1,10 @@
+.acoes{
+  width: 150px;
+  text-align: center;
+}
+
+.acoes i{
+  cursor: pointer;
+  margin-left: 15px;
+  margin-right: 15px;
+}
