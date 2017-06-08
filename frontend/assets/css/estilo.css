@@ -1,3 +1,7 @@
+.conteudo{
+  padding-top: 45px;
+}
+
 .acoes{
   width: 150px;
   text-align: center;
@@ -7,4 +11,16 @@
   cursor: pointer;
   margin-left: 15px;
   margin-right: 15px;
+}
+
+.tableZoos {
+  table-layout: fixed;
+}
+
+.tableZoos tbody td{
+  height: 47px;
+}
+
+.tableCollumns{
+  width: calc(50% - 75px);
 }

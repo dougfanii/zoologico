@@ -7,8 +7,45 @@
         <link rel="stylesheet" href="assets/css/estilo.css">
     </head>
     <body>
-        <div id="app" class="container">
-            <h1>Zoológico</h1>
+          <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Zoos Virtuos</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Zoológicos</a></li>
+                      <li><a href="#">Funcionários</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Nav header</li>
+                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">One more separated link</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="../navbar/">Default</a></li>
+                  <li><a href="../navbar-static-top/">Static top</a></li>
+                  <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </nav>
+          <div id="app" class="container conteudo">
+            <h1>Cadastro de Zoológico</h1>
 
             <div class="row">
                 <div class="col-md-12">
@@ -30,11 +67,11 @@
                         <div class="panel-heading">
                             Zoos Cadastrados
                         </div>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered tableZoos">
                           <thead>
                             <tr>
-                              <th>Nome</th>
-                              <th>Endereço</th>
+                              <th class="tableCollumns">Nome</th>
+                              <th class="tableCollumns">Endereço</th>
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
@@ -42,11 +79,11 @@
                             <tr>
                               <td>
                                 <div data-bind="visible: !editingName(), text: nomeZoo, click: $root.editName"></div>
-                                <input type="text" class="form-control input-sm" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName"/>
+                                <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/>
                               </td>
                               <td>
                                 <div data-bind="visible: !editingAddress(), text: enderecoZoo, click: $root.editAddress"></div>
-                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress, value: enderecoZoo, hasFocus: editingAddress"/>
+                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress, value: enderecoZoo, hasFocus: editingAddress, event: {keyup: enterEditAddress}"/>
                               </td>
                               <td class="acoes">
                                 <i class="glyphicon glyphicon-edit"></i>
