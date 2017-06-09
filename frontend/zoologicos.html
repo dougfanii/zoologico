@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Projeto Frontend</title>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/estilo.css">
+    </head>
+    <body>
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Zoos Virtuos</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="index.html">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <!-- <li><a href="#contact">Contact</a></li> -->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="zoologicos.html">Zoológicos</a></li>
+                  <li><a href="funcionarios.html">Funcionários</a></li>
+                  <li><a href="usuarios.html">Usuários</a></li>
+                  <!-- <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li> -->
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Animais<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="animais.html">Animais</a></li>
+                  <li><a href="especies.html">Espécies</a></li>
+                  <li><a href="recintos.html">Recintos</a></li>
+                  <!-- <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li> -->
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visitante<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="visitantes.html">Visitantes</a></li>
+                  <li><a href="visitas.html">Visitas</a></li>
+                  <!-- <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li> -->
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../navbar/">Default</a></li>
+              <li><a href="../navbar-static-top/">Static top</a></li>
+              <li class="active"><a href="./">Sair <span class="sr-only">(current)</span></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+          <div id="app" class="container conteudo">
+            <h1>Cadastro de Zoológico</h1>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Nome do zoológico</label>
+                        <input class="form-control input-sm" data-bind="textInput: name">
+                    </div>
+                    <div class="form-group">
+                        <label>Endereço do zoológico</label>
+                        <input class="form-control input-sm" data-bind="textInput: address">
+                    </div>
+                    <button class="btn btn-info btn-sm pull-left" data-bind="click: addZoo">Cadastrar</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Zoos Cadastrados
+                        </div>
+                        <table class="table table-bordered tableZoos">
+                          <thead>
+                            <tr>
+                              <th class="tableCollumns">Nome</th>
+                              <th class="tableCollumns">Endereço</th>
+                              <th class="acoes">Ações</th>
+                            </tr>
+                          </thead>
+                          <tbody data-bind="foreach: zoos">
+                            <tr>
+                              <td>
+                                <div data-bind="visible: !editingName(), text: nomeZoo, click: $root.editName"></div>
+                                <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/>
+                              </td>
+                              <td>
+                                <div data-bind="visible: !editingAddress(), text: enderecoZoo, click: $root.editAddress"></div>
+                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress, value: enderecoZoo, hasFocus: editingAddress, event: {keyup: enterEditAddress}"/>
+                              </td>
+                              <td class="acoes">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                <i class="glyphicon glyphicon-remove-circle" data-bind="click: $root.deleteZoo"></i>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="assets/vendor/jquery/jquery.js"></script>
+        <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="assets/vendor/knockout/knockout.js"></script>
+        <script type="text/javascript" src="assets/js/zoologico.js"></script>
+    </body>
+</html>

@@ -1,9 +1,9 @@
 var Zoo = function(objZoo){
   var self = this;
 
-  self.idZoo = ko.observable(objZoo.idZoo);
-  self.nomeZoo = ko.observable(objZoo.nomeZoo);
-  self.enderecoZoo = ko.observable(objZoo.enderecoZoo);
+  self.idVisitante = ko.observable(objZoo.idVisitante);
+  self.nomeVisitante = ko.observable(objZoo.nomeVisitante);
+  self.dtNascVisitante = ko.observable(objZoo.dtNascVisitante);
   self.editingName = ko.observable(false);
   self.editingAddress = ko.observable(false);
 

@@ -24,3 +24,7 @@
 .tableCollumns{
   width: calc(50% - 75px);
 }
+
+.formReg{
+  text-align: center;
+}
