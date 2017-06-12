@@ -39,9 +39,9 @@ var Zoo = function(objZoo){
     if(e.keyCode === 13){
       self.editingName(false);
     }
-    if(e.keyCode === 9){
-      self.editingAddress(true);
-    }
+    // if(e.keyCode === 9){
+    //   self.editingAddress(true);
+    // }
   }
 
   self.enterEditAddress = function(viewModel, e){
