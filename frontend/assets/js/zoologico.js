@@ -1,4 +1,5 @@
 var Zoo = function(objZoo){
+
   var self = this;
 
   self.idZoo = ko.observable(objZoo.idZoo);
@@ -8,6 +9,7 @@ var Zoo = function(objZoo){
   self.editingAddress = ko.observable(false);
 
   self.editingName.subscribe(function(editingName){
+    console.log(self.editingName());
     if(editingName == false){
         $.ajax({
           url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
@@ -61,6 +63,7 @@ function AppViewModel(){
 
   self.editing = ko.observable(false);
   self.editName = function(zoo) {
+    console.log('nao chama');
     zoo.editingName(true)
   };
 
@@ -84,7 +87,6 @@ function AppViewModel(){
         },
         success: function(result){
           self.zoos.push(new Zoo(result.records));
-          console.log(result.records);
         }
       });
     }

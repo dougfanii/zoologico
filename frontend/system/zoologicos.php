@@ -43,12 +43,12 @@
                           <tbody data-bind="foreach: zoos">
                             <tr>
                               <td>
-                                <div data-bind="visible: !editingName(), text: nomeZoo, click: $root.editName"></div>
-                                <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/>
+                                <div data-bind="visible: !editingName(), text: nomeZoo(), click: $root.editName"></div>
+                                <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName(), value: nomeZoo(), hasFocus: editingName, event: {keyup: enterEditName}"/>
                               </td>
                               <td>
-                                <div data-bind="visible: !editingAddress(), text: enderecoZoo, click: $root.editAddress"></div>
-                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress, value: enderecoZoo, hasFocus: editingAddress, event: {keyup: enterEditAddress}"/>
+                                <div data-bind="visible: !editingAddress(), text: enderecoZoo(), click: $root.editAddress"></div>
+                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress(), value: enderecoZoo(), hasFocus: editingAddress(), event: {keyup: enterEditAddress}"/>
                               </td>
                               <td class="acoes">
                                 <i class="glyphicon glyphicon-edit"></i>

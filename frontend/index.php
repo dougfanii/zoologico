@@ -19,6 +19,5 @@
         <script type="text/javascript" src="assets/vendor/jquery/jquery.js"></script>
         <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="assets/vendor/knockout/knockout.js"></script>
-        <script type="text/javascript" src="assets/js/zoologico.js"></script>
     </body>
 </html>
