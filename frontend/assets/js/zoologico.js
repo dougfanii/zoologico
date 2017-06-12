@@ -1,9 +1,9 @@
 var Zoo = function(objZoo){
   var self = this;
 
-  self.idVisitante = ko.observable(objZoo.idVisitante);
-  self.nomeVisitante = ko.observable(objZoo.nomeVisitante);
-  self.dtNascVisitante = ko.observable(objZoo.dtNascVisitante);
+  self.idZoo = ko.observable(objZoo.idZoo);
+  self.nomeZoo = ko.observable(objZoo.nomeZoo);
+  self.enderecoZoo = ko.observable(objZoo.enderecoZoo);
   self.editingName = ko.observable(false);
   self.editingAddress = ko.observable(false);
 
@@ -39,7 +39,6 @@ var Zoo = function(objZoo){
     if(e.keyCode === 13){
       self.editingName(false);
     }
-    console.log(e.keyCode);
     if(e.keyCode === 9){
       self.editingAddress(true);
     }
@@ -75,7 +74,6 @@ function AppViewModel(){
   // }
 
   self.addZoo = function(){
-    console.log("entrou");
     if(self.name() != ""){
       $.ajax({
         url: 'http://localhost:81/v1/zoos/',
@@ -86,15 +84,13 @@ function AppViewModel(){
         },
         success: function(result){
           self.zoos.push(new Zoo(result.records));
-          // self.zoos.push(result.records)
-          console.log(self.zoos());
+          console.log(result.records);
         }
       });
     }
   };
 
   self.deleteZoo = function(zoo){
-    console.log(zoo.idZoo());
     $.ajax({
       url: 'http://localhost:81/v1/zoos/' + zoo.idZoo(),
       type: 'DELETE',
@@ -103,7 +99,6 @@ function AppViewModel(){
         self.zoos.splice(zoo.idZoo, 0);
       }
     });
-    console.log("excluido com sucesso");
   };
 
   self.setData = function(data){
