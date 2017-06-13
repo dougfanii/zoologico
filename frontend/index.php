@@ -11,14 +11,14 @@
         include "header.php";
       ?>
           <div id="app" class="container conteudo">
-            <div>
               <?php include $_GET['page']; ?>
-            </div>
           </div>
         </div>
         <script type="text/javascript" src="assets/vendor/jquery/jquery.js"></script>
         <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="assets/vendor/knockout/knockout.js"></script>
         <script type="text/javascript" src="assets/js/zoologico.js"></script>
+        <script type="text/javascript" src="assets/js/visitantes.js"></script>
+        <script type="text/javascript" src="assets/js/global.js"></script>
     </body>
 </html>

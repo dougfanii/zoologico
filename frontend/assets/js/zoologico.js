@@ -10,7 +10,7 @@ var Zoo = function(objZoo){
   self.editingName.subscribe(function(editingName){
     if(editingName == false){
         $.ajax({
-          url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
+          url: window.global.urlapi + '/v1/zoos/' + self.idZoo(),
           type: 'PUT',
           data: {
             nomeZoo: self.nomeZoo()
@@ -24,7 +24,7 @@ var Zoo = function(objZoo){
   self.editingAddress.subscribe(function(editingAddress){
     if(editingAddress == false){
         $.ajax({
-          url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
+        url: window.global.urlapi + '/v1/zoos/' + self.idZoo(),
           type: 'PUT',
           data: {
             enderecoZoo: self.enderecoZoo()
@@ -76,7 +76,7 @@ function AppViewModel(){
   self.addZoo = function(){
     if(self.name() != ""){
       $.ajax({
-        url: 'http://localhost:81/v1/zoos/',
+        url: window.global.urlapi + '/v1/zoos/',
         type: 'POST',
         data: {
           nomeZoo: self.name(),
@@ -92,7 +92,7 @@ function AppViewModel(){
 
   self.deleteZoo = function(zoo){
     $.ajax({
-      url: 'http://localhost:81/v1/zoos/' + zoo.idZoo(),
+      url: window.global.urlapi + '/v1/zoos/' + self.idZoo(),
       type: 'DELETE',
       success: function(result){
         ko.utils.addOrRemoveItem(self.zoos(), zoo, false);
@@ -108,7 +108,6 @@ function AppViewModel(){
   };
 
   $.ajax({
-    url: 'http://localhost:81/v1/zoos/',
     type: 'GET',
     success: function(result){
       self.setData(result.records)

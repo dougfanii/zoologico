@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Projeto Frontend</title>
-        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/estilo.css">
-    </head>
-    <body>
-      <?php
-        include "header.php";
-      ?>
           <div id="app" class="container conteudo">
             <h1>Cadastro de Visitante</h1>
-
             <div class="row formReg">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -21,7 +8,7 @@
                     </div>
                     <div class="form-group">
                         <label>Data de nascimento</label>
-                        <input type="date" class="form-control input-sm" data-bind="textInput: address">
+                        <input type="date" class="form-control input-sm" data-bind="textInput: dateNasc">
                     </div>
                     <button class="btn btn-info btn-sm pull-left" data-bind="click: addZoo">Cadastrar</button>
                 </div>
@@ -37,11 +24,11 @@
                           <thead>
                             <tr>
                               <th class="tableCollumns">Nome</th>
-                              <th class="tableCollumns">Data de nascimento</th>
+                                <th class="tableCollumns">Data de nascimento</th>
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
-                          <tbody data-bind="foreach: zoos">
+                          <tbody data-bind="foreach: visitantes">
                             <tr>
                               <td>
                                 <div data-bind="visible: !editingName(), text: nomeZoo, click: $root.editName"></div>
@@ -60,11 +47,3 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
-        <script type="text/javascript" src="../assets/vendor/jquery/jquery.js"></script>
-        <script type="text/javascript" src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="../assets/vendor/knockout/knockout.js"></script>
-        <script type="text/javascript" src="../assets/js/zoologico.js"></script>
-    </body>
-</html>
