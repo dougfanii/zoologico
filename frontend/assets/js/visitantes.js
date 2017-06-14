@@ -1,19 +1,19 @@
-var Zoo = function(objZoo){
+var Visitante = function(objVisitante){
   var self = this;
 
-  self.idZoo = ko.observable(objZoo.idZoo);
-  self.nomeZoo = ko.observable(objZoo.nomeZoo);
-  self.enderecoZoo = ko.observable(objZoo.enderecoZoo);
+  self.idVisitante = ko.observable(objVisitante.idVisitante);
+  self.nomeVisitante = ko.observable(objVisitante.nomeVisitante);
+  self.dtNascVisitante = ko.observable(objVisitante.dtNascVisitante);
   self.editingName = ko.observable(false);
-  self.editingAddress = ko.observable(false);
+  self.editingBirth = ko.observable(false);
 
   self.editingName.subscribe(function(editingName){
     if(editingName == false){
         $.ajax({
-          url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
+          url: 'v1/zoos/' + self.idVisitante(),
           type: 'PUT',
           data: {
-            nomeZoo: self.nomeZoo()
+            nomeVisitante: self.nomeVisitante()
           },
           success: function(result){
           }
@@ -21,13 +21,13 @@ var Zoo = function(objZoo){
     }
   })
 
-  self.editingAddress.subscribe(function(editingAddress){
-    if(editingAddress == false){
+  self.editingBirth.subscribe(function(editingBirth){
+    if(editingBirth == false){
         $.ajax({
-          url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
+          url: 'http://localhost:81/v1/zoos/' + self.idVisitante(),
           type: 'PUT',
           data: {
-            enderecoZoo: self.enderecoZoo()
+            dtNascVisitante: self.dtNascVisitante()
           },
           success: function(result){
           }
@@ -41,13 +41,13 @@ var Zoo = function(objZoo){
     }
     console.log(e.keyCode);
     if(e.keyCode === 9){
-      self.editingAddress(true);
+      self.editingBirth(true);
     }
   }
 
-  self.enterEditAddress = function(viewModel, e){
+  self.entereditBirth = function(viewModel, e){
     if(e.keyCode === 13){
-      self.editingAddress(false);
+      self.editingBirth(false);
     }
   }
 
@@ -58,7 +58,7 @@ function AppViewModel(){
 
   self.name = ko.observable();
   self.address = ko.observable();
-  self.zoos = ko.observableArray();
+  self.visitors = ko.observableArray();
 
   self.editing = ko.observable(false);
   self.editName = function(zoo) {
@@ -66,41 +66,40 @@ function AppViewModel(){
   };
 
 
-  self.editAddress = function(zoo) {
-    zoo.editingAddress(true);
+  self.editBirth = function(zoo) {
+    zoo.editingBirth(true);
   };
 
-  // if(zoo.editingAddress() == false){
+  // if(zoo.editingBirth() == false){
   //   alert("não  está aprecendo");
   // }
 
-  self.addZoo = function(){
-    console.log("entrou");
+  self.addVisitante = function(){
     if(self.name() != ""){
       $.ajax({
         url: 'http://localhost:81/v1/zoos/',
         type: 'POST',
         data: {
-          nomeZoo: self.name(),
-          enderecoZoo: self.address()
+          ko.utils.addOrRemoveItem(self.zoos(), zoo, false);
+          nomeVisitante: self.name(),
+          dtNascVisitante: self.address()
         },
         success: function(result){
-          self.zoos.push(new Zoo(result.records));
+          self.zoos.push(new Visitors(result.records));
           // self.zoos.push(result.records)
-          console.log(self.zoos());
+          console.log(self.visitantes());
         }
       });
     }
   };
 
-  self.deleteZoo = function(zoo){
-    console.log(zoo.idZoo());
+  self.deleteVisistante = function(visitantes){
+    console.visitante.idVisitante());
     $.ajax({
-      url: 'http://localhost:81/v1/zoos/' + zoo.idZoo(),
+      url: 'http://localhost:81/v1/zoos/' + visitantes.idVisitante(),
       type: 'DELETE',
       success: function(result){
-        ko.utils.addOrRemoveItem(self.zoos(), zoo, false);
-        self.zoos.splice(zoo.idZoo, 0);
+        self.zoos.splice(zoo.idVisitante, 0);
       }
     });
     console.log("excluido com sucesso");
@@ -108,12 +107,12 @@ function AppViewModel(){
 
   self.setData = function(data){
     data.forEach(function(value, index){
-      self.zoos.push(new Zoo(value));
+      self.visitantes.push(new Visitantes(value));
     });
   };
 
   $.ajax({
-    url: 'http://localhost:81/v1/zoos/',
+    url: window.global.urlapi + '/v1/visitantes/',
     type: 'GET',
     success: function(result){
       self.setData(result.records)
