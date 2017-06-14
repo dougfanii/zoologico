@@ -27,7 +27,8 @@ class ZooController extends RESTController
                 [
                     'conditions' => 'true ' . $this->getConditions(),
                     'columns' => $this->partialFields,
-                    'limit' => $this->limit
+                    'limit' => $this->limit,
+                    'order' => 'idZoo'
                 ]
             );
 
