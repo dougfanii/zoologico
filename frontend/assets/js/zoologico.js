@@ -1,3 +1,5 @@
+/* INÍCIO DA CLASSE ZOO */
+
 
 var Zoo = function(objZoo){
 
@@ -52,23 +54,60 @@ var Zoo = function(objZoo){
 
 };
 
-function AppViewModel(){
-  var self = this;
+/* FIM DA CLASSE ZOO */
 
+
+ /* INÍCIO DA ViewModel */
+
+function AppViewModel(){
+
+  var self = this;
   self.name = ko.observable();
   self.address = ko.observable();
   self.zoos = ko.observableArray();
-
   self.editing = ko.observable(false);
-  self.editName = function(zoo) {
-    console.log('nao chama');
-    zoo.editingName(true)
-  };
+  self.showRows = ko.observable(false);
 
 
-  self.editAddress = function(zoo) {
-    zoo.editingAddress(true);
+  self.showRows.subscribe(function(editingName){
+    console.log(self.showRows());
+    if(editingName == false){
+        $.ajax({
+          url: window.global.urlapi + 'v1/zoos/' + self.idZoo(),
+          type: 'PUT',
+          data: {
+            nomeZoo: self.nomeZoo()
+          },
+          success: function(result){
+          }
+        });
+    }
+  })
+
+
+  /* Exibir aviso de que não há registros no banco */
+
+
+  /* GET API */
+
+  self.setData = function(data){
+      data.forEach(function(value){
+        self.zoos.push(new Zoo(value));
+    });
   };
+
+  $.ajax({
+    url: window.global.urlapi + '/v1/zoos/',
+    type: 'GET',
+    success: function(result){
+      if(!$.isEmptyObject(result.records)){
+        console.log(result.records);
+        self.setData(result.records);
+      }
+    }
+  });
+
+  /* ADD */
 
   self.addZoo = function(){
     if(self.name() != ""){
@@ -86,6 +125,24 @@ function AppViewModel(){
     }
   };
 
+  /* PUT */
+
+  self.editName = function(zoo) {
+    console.log('nao chama');
+    zoo.editingName(true)
+  };
+
+
+  self.editAddress = function(zoo) {
+    zoo.editingAddress(true);
+  };
+
+  self.occultRows = function(teste) {
+
+  }
+
+  /* DELETE */
+
   self.deleteZoo = function(zoo){
     $.ajax({
       url: window.global.urlapi + '/v1/zoos/' + zoo.idZoo(),
@@ -97,22 +154,9 @@ function AppViewModel(){
     });
   };
 
-  self.setData = function(data){
-      console.log(data);
-      data.forEach(function(value){
-        self.zoos.push(new Zoo(value));
-    });
-  };
-
-  $.ajax({
-    url: window.global.urlapi + '/v1/zoos/',
-    type: 'GET',
-    success: function(result){
-      self.setData(result.records);
-    }
-  });
-
 }
+
+/* FIM DA VIEWMODEL */
 
 
 ko.applyBindings(new AppViewModel());

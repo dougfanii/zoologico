@@ -10,7 +10,7 @@
                       <label>Endereço do zoológico</label>
                       <input class="form-control input-sm" data-bind="textInput: address">
                   </div>
-                  <button class="btn btn-info btn-sm pull-left col-md-6 col-md-offset-3" data-bind="click: addZoo">Cadastrar</button>
+                  <button class="btn btn-info btn-sm pull-left col-md-6 col-md-offset-3" data-bind="click: addZoo, , click: $root.occultRows">Cadastrar</button>
               </div>
             </div>
             <br>
@@ -28,8 +28,11 @@
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
+                          <tr data-bind="visible: naoMostrar()">
+                            <td colspan="3">Não há registros cadastrados></td>
+                          </tr>
                           <tbody data-bind="foreach: zoos">
-                            <tr>
+                            <tr id="showRows">
                               <td>
                                 <div data-bind="visible: !editingName(), text: nomeZoo(), click: $root.editName"></div>
                                 <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName(), value: nomeZoo(), hasFocus: editingName, event: {keyup: enterEditName}"/>
@@ -40,7 +43,7 @@
                               </td>
                               <td class="acoes">
                                 <!-- <i class="glyphicon glyphicon-edit"></i> -->
-                                <i class="glyphicon glyphicon-remove-circle" data-bind="click: $root.deleteZoo"></i>
+                                <i class="glyphicon glyphicon-remove-circle" data-bind="click: $root.deleteZoo, click: $root.occultRows"></i>
                               </td>
                             </tr>
                           </tbody>
