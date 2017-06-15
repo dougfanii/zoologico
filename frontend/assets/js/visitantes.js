@@ -106,7 +106,7 @@ function AppViewModel(){
   };
 
   self.setData = function(data){
-    data.forEach(function(value, index){
+      data.forEach(function(value, index){
       self.visitantes.push(new Visitantes(value));
     });
   };

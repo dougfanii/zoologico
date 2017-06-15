@@ -1,4 +1,3 @@
-
 var Zoo = function(objZoo){
 
   var self = this;
@@ -13,7 +12,7 @@ var Zoo = function(objZoo){
     console.log(self.editingName());
     if(editingName == false){
         $.ajax({
-          url: window.global.urlapi + 'v1/zoos/' + self.idZoo(),
+          url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
           type: 'PUT',
           data: {
             nomeZoo: self.nomeZoo()
@@ -27,7 +26,7 @@ var Zoo = function(objZoo){
   self.editingAddress.subscribe(function(editingAddress){
     if(editingAddress == false){
         $.ajax({
-          url: window.global.urlapi + '/v1/zoos/' + self.idZoo(),
+          url: 'http://localhost:81/v1/zoos/' + self.idZoo(),
           type: 'PUT',
           data: {
             enderecoZoo: self.enderecoZoo()
@@ -41,6 +40,9 @@ var Zoo = function(objZoo){
   self.enterEditName = function(viewModel, e){
     if(e.keyCode === 13){
       self.editingName(false);
+    }
+    if(e.keyCode === 9){
+      self.editingAddress(true);
     }
   }
 
@@ -70,10 +72,14 @@ function AppViewModel(){
     zoo.editingAddress(true);
   };
 
+  // if(zoo.editingAddress() == false){
+  //   alert("não  está aprecendo");
+  // }
+
   self.addZoo = function(){
     if(self.name() != ""){
       $.ajax({
-        url: window.global.urlapi + '/v1/zoos/',
+        url: 'http://localhost:81/v1/zoos/',
         type: 'POST',
         data: {
           nomeZoo: self.name(),
@@ -88,7 +94,7 @@ function AppViewModel(){
 
   self.deleteZoo = function(zoo){
     $.ajax({
-      url: window.global.urlapi + '/v1/zoos/' + zoo.idZoo(),
+      url: 'http://localhost:81/v1/zoos/' + zoo.idZoo(),
       type: 'DELETE',
       success: function(result){
         ko.utils.addOrRemoveItem(self.zoos(), zoo, false);
@@ -98,17 +104,16 @@ function AppViewModel(){
   };
 
   self.setData = function(data){
-      console.log(data);
-      data.forEach(function(value){
-        self.zoos.push(new Zoo(value));
+    data.forEach(function(value, index){
+      self.zoos.push(new Zoo(value));
     });
   };
 
   $.ajax({
-    url: window.global.urlapi + '/v1/zoos/',
+    url: 'http://localhost:81/v1/zoos/',
     type: 'GET',
     success: function(result){
-      self.setData(result.records);
+      self.setData(result.records)
     }
   });
 

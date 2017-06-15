@@ -53,7 +53,7 @@ class FuncionarioController extends RESTController
         // }
     }
 
-    public function getFuncionario($IdFuncionario)
+    public function getFuncionario($CdFuncionario)
     {
       try{
       $query = new \Phalcon\Mvc\Model\Query\Builder();
@@ -64,7 +64,7 @@ class FuncionarioController extends RESTController
             ]
           )
         ->limit($this->partialFields)
-        ->where("IdFuncionario = '$IdFuncionario'");
+        ->where("CdFuncionario = '$CdFuncionario'");
       return $query->getQuery()->execute();
       } catch (\Exception $e) {
           throw new \Exception($e->getMessage(), $e->getCode());
@@ -100,12 +100,12 @@ class FuncionarioController extends RESTController
      * @access public
      * @return Array.
      */
-    public function editFuncionario($IdFuncionario)
+    public function editFuncionario($CdFuncionario)
     {
 
         try {
 
-            $funcionario = (new Funcionario())->findFirst($IdFuncionario);
+            $funcionario = (new Funcionario())->findFirst($CdFuncionario);
 
             if (false === $funcionario) {
                 throw new \Exception("This record doesn't exist", 200);
@@ -135,10 +135,10 @@ class FuncionarioController extends RESTController
      * @access public
      * @return boolean.
      */
-    public function deleteFuncionario($IdFuncionario)
+    public function deleteFuncionario($CdFuncionario)
     {
         try {
-            $funcionario = (new Funcionario())->findFirst($IdFuncionario);
+            $funcionario = (new Funcionario())->findFirst($CdFuncionario);
 
             if (false === $funcionario) {
                 throw new \Exception("This record doesn't exist", 200);

@@ -3,7 +3,7 @@ namespace App\Zoos\Models;
 
 class Funcionario extends \App\Models\BaseModel
 {
-  public  $IdFuncionario;
+  public $CdFuncionario;
 
   public $NomeFuncionario;
 

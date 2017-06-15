@@ -14,12 +14,11 @@
               <?php
                 if(!$_GET['page']){
                   echo '<div class="cover-container">
-
-
-          <div class="inner cover row col-md-6 col-md-offset-3 showIndex">
-            <h1 class="cover-heading">Administre seu zoológico!</h1>
-            <p class="lead">Esta aplicação lhe trará auxílio para administrar seu zoológico, tendo controle sobre seus ambientes, visitas, funcionários e animais.</p>
-          </div>';
+                          <div class="inner cover row col-md-6 col-md-offset-3 showIndex">
+                            <h1 class="cover-heading">Administre seu zoológico!</h1>
+                            <p class="lead">Esta aplicação lhe trará auxílio para administrar seu zoológico, tendo controle sobre seus ambientes, visitas, funcionários e animais.</p>
+                          </div>
+                        </div>';
                 }else{
                   include $_GET['page'];
                 }

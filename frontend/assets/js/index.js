@@ -33,9 +33,6 @@ function AppViewModel(){
       self.setData(result.records)
     }
   });
-
-
-
 }
 
 

@@ -12,12 +12,11 @@
       ?>
 
           <div id="app" class="container conteudo">
-            <h1>Cadastro de Zoológico</h1>
-
+            <h1>Cadastro de Usuários</h1>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Nome do zoológico</label>
+                        <label>Nome do funcionário</label>
                         <input class="form-control input-sm" data-bind="textInput: name">
                     </div>
                     <div class="form-group">

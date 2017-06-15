@@ -23,16 +23,16 @@ class ZooController extends RESTController
     public function getZoos()
     {
         try {
-            $zoo = (new Zoo())->find(
+          $query = new \Phalcon\Mvc\Model\Query\Builder();
+          $query->addFrom('\App\Zoos\Models\Zoo', 'Zoo')
+            ->columns(
                 [
-                    'conditions' => 'true ' . $this->getConditions(),
-                    'columns' => $this->partialFields,
-                    'limit' => $this->limit,
-                    'order' => 'idZoo'
+                  'Zoo.*'
                 ]
-            );
-
-            return $zoo;
+              )
+              ->limit($this->partialFields)
+              ->where('true' . $this->getConditions());
+            return $query->getQuery()->execute();
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage(), $e->getCode());
         }

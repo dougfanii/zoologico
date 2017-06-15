@@ -29,6 +29,8 @@ class Usuario extends \App\Models\BaseModel
 
     public $PermissaoUsuario;
 
+    public $Funcionario_CdFuncionario;
+
     public function getSource(){
       // getSource o que é
       return 'Usuario';
