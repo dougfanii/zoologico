@@ -10,7 +10,7 @@
                       <label>Endereço do zoológico</label>
                       <input class="form-control input-sm" data-bind="textInput: address">
                   </div>
-                  <button class="btn btn-info btn-sm pull-left col-md-6 col-md-offset-3" data-bind="click: addZoo, , click: $root.occultRows">Cadastrar</button>
+                  <button class="btn btn-info btn-sm pull-left col-md-6 col-md-offset-3" data-bind="click: addZoo">Cadastrar</button>
               </div>
             </div>
             <br>
@@ -28,22 +28,22 @@
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
-                          <tr data-bind="visible: naoMostrar()">
+                          <!-- <tr data-bind="visible: naoMostrar()">
                             <td colspan="3">Não há registros cadastrados></td>
-                          </tr>
+                          </tr> -->
                           <tbody data-bind="foreach: zoos">
-                            <tr id="showRows">
+                            <tr>
                               <td>
-                                <div data-bind="visible: !editingName(), text: nomeZoo(), click: $root.editName"></div>
-                                <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName(), value: nomeZoo(), hasFocus: editingName, event: {keyup: enterEditName}"/>
+                                <div data-bind="visible: !editingName(), text: nomeZoo, click: $root.editName"></div>
+                                <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/>
                               </td>
                               <td>
-                                <div data-bind="visible: !editingAddress(), text: enderecoZoo(), click: $root.editAddress"></div>
-                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress(), value: enderecoZoo(), hasFocus: editingAddress(), event: {keyup: enterEditAddress}"/>
+                                <div data-bind="visible: !editingAddress(), text: enderecoZoo, click: $root.editAddress"></div>
+                                <input type="text" class="form-control input-sm" data-bind="visible: editingAddress, value: enderecoZoo, hasFocus: editingAddress, event: {keyup: enterEditAddress}"/>
                               </td>
                               <td class="acoes">
-                                <!-- <i class="glyphicon glyphicon-edit"></i> -->
-                                <i class="glyphicon glyphicon-remove-circle" data-bind="click: $root.deleteZoo, click: $root.occultRows"></i>
+                                <i class="glyphicon glyphicon-edit"></i>
+                                <i class="glyphicon glyphicon-remove-circle" data-bind="click: $root.deleteZoo"></i>
                               </td>
                             </tr>
                           </tbody>

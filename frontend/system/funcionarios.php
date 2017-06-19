@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Projeto Frontend</title>
-        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/estilo.css">
-    </head>
-    <body>
-      <?php
-        include "../header.php";
-      ?>
           <div id="app" class="container conteudo">
             <h1>Cadastro de Funcionário</h1>
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -41,6 +28,9 @@
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
+                          <!-- <tr data-bind="visible: naoMostrar()">
+                            <td colspan="3">Não há registros cadastrados></td>
+                          </tr> -->
                           <tbody data-bind="foreach: zoos">
                             <tr>
                               <td>

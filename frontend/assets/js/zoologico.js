@@ -12,7 +12,7 @@ var Zoo = function(objZoo){
   self.editingAddress = ko.observable(false);
 
   self.editingName.subscribe(function(editingName){
-    console.log(self.editingName());
+    console.log(editingName);
     if(editingName == false){
         $.ajax({
           url: window.global.urlapi + 'v1/zoos/' + self.idZoo(),
@@ -24,6 +24,7 @@ var Zoo = function(objZoo){
           }
         });
     }
+    console.log('nao entra no if');
   })
 
   self.editingAddress.subscribe(function(editingAddress){
@@ -42,6 +43,7 @@ var Zoo = function(objZoo){
 
   self.enterEditName = function(viewModel, e){
     if(e.keyCode === 13){
+      console.log('saiu');
       self.editingName(false);
     }
   }
@@ -66,27 +68,34 @@ function AppViewModel(){
   self.address = ko.observable();
   self.zoos = ko.observableArray();
   self.editing = ko.observable(false);
-  self.showRows = ko.observable(false);
 
-
-  self.showRows.subscribe(function(editingName){
-    console.log(self.showRows());
-    if(editingName == false){
-        $.ajax({
-          url: window.global.urlapi + 'v1/zoos/' + self.idZoo(),
-          type: 'PUT',
-          data: {
-            nomeZoo: self.nomeZoo()
-          },
-          success: function(result){
-          }
-        });
-    }
-  })
 
 
   /* Exibir aviso de que não há registros no banco */
 
+  self.zoos.subscribe(function(){
+    console.log(self.zoos().length);
+    if(self.zoos == 0){
+      console.log('nao há nenhum zoo cadastrado');
+    }
+  })
+
+  // self.showRows.subscribe(function(editingName){
+  //   console.log(self.showRows());
+  //   if(editingName == false){
+  //       $.ajax({
+  //         url: window.global.urlapi + 'v1/zoos/' + self.idZoo(),
+  //         type: 'PUT',
+  //         data: {
+  //           nomeZoo: self.nomeZoo()
+  //         },
+  //         success: function(result){
+  //         }
+  //       });
+  //   }
+  // })
+
+  /* Fim exibição do aviso */
 
   /* GET API */
 
@@ -101,7 +110,6 @@ function AppViewModel(){
     type: 'GET',
     success: function(result){
       if(!$.isEmptyObject(result.records)){
-        console.log(result.records);
         self.setData(result.records);
       }
     }
@@ -110,6 +118,7 @@ function AppViewModel(){
   /* ADD */
 
   self.addZoo = function(){
+    console.log("entrou");
     if(self.name() != ""){
       $.ajax({
         url: window.global.urlapi + '/v1/zoos/',
@@ -128,8 +137,8 @@ function AppViewModel(){
   /* PUT */
 
   self.editName = function(zoo) {
-    console.log('nao chama');
-    zoo.editingName(true)
+    console.log('entrou em edicao');
+    zoo.editingName(true);
   };
 
 
@@ -137,9 +146,7 @@ function AppViewModel(){
     zoo.editingAddress(true);
   };
 
-  self.occultRows = function(teste) {
-
-  }
+  self.occultRows = function() {}
 
   /* DELETE */
 
