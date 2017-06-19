@@ -28,9 +28,9 @@
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
-                          <!-- <tr data-bind="visible: naoMostrar()">
-                            <td colspan="3">Não há registros cadastrados></td>
-                          </tr> -->
+                          <tr data-bind="visible: showEmpty">
+                            <td colspan="3" align='center'>Não há zoológicos cadastrados</td>
+                          </tr>
                           <tbody data-bind="foreach: zoos">
                             <tr>
                               <td>
