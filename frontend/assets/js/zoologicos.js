@@ -1,6 +1,5 @@
 /* INÍCIO DA CLASSE ZOO */
 
-
 var Zoo = function(objZoo){
 
   var self = this;
@@ -14,7 +13,7 @@ var Zoo = function(objZoo){
   self.editingName.subscribe(function(editingName){
     if(editingName == false){
         $.ajax({
-          url: window.global.urlapi + 'v1/zoos/' + self.idZoo(),
+          url: window.global.urlapi + '/v1/zoos/' + self.idZoo(),
           type: 'PUT',
           data: {
             nomeZoo: self.nomeZoo()

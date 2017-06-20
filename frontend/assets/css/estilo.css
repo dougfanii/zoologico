@@ -1,6 +1,20 @@
+/* Cabeçalho */
+
+/* Conteúdo */
+
 .conteudo{
   padding-top: 45px;
 }
+
+.showData{
+  margin-top: 15px;
+}
+
+.showIndex{
+  margin-top: 150px;
+}
+
+/* Tabelas */
 
 .acoes{
   width: 150px;
@@ -25,14 +39,42 @@
   width: calc(50% - 75px);
 }
 
+/* Formulários */
+
 .formReg{
   text-align: center;
 }
 
-.showData{
-  margin-top: 15px;
+.campCpf{
+  float: left;
+  margin-right: 25px;
 }
 
-.showIndex{
-  margin-top: 150px;
+.campCpf .inpCpf{
+  width: 150px;
+}
+
+.campNome{
+
+}
+
+.campNome .inpNome{
+  width: 250px;
+}
+
+.campNasc{
+  float: left;
+  margin-right: 25px;
+}
+
+.campNasc .inpNasc{
+  width: 150px;
+}
+
+.campAdms{
+
+}
+
+.campAdmis .inpAdmis{
+  width: 150px;
 }

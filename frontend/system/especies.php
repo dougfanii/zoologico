@@ -11,17 +11,13 @@
         include "../header.php";
       ?>
           <div id="app" class="container conteudo">
-            <h1>Cadastro de Zoológico</h1>
+            <h1>Cadastro de Espécies</h1>
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Nome do zoológico</label>
+                        <label>Espécie</label>
                         <input class="form-control input-sm" data-bind="textInput: name">
-                    </div>
-                    <div class="form-group">
-                        <label>Endereço do zoológico</label>
-                        <input class="form-control input-sm" data-bind="textInput: address">
                     </div>
                     <button class="btn btn-info btn-sm pull-left" data-bind="click: addZoo">Cadastrar</button>
                 </div>
@@ -31,13 +27,12 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Zoos Cadastrados
+                            Espécies cadastradas
                         </div>
                         <table class="table table-bordered tableZoos">
                           <thead>
                             <tr>
-                              <th class="tableCollumns">Nome</th>
-                              <th class="tableCollumns">Endereço</th>
+                              <th class="tableCollumns">Espécies</th>
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>

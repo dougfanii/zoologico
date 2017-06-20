@@ -64,7 +64,7 @@ class FuncionarioController extends RESTController
             ]
           )
         ->limit($this->partialFields)
-        ->where("CdFuncionario = '$CdFuncionario'");
+        ->where("cdFuncionario = '$CdFuncionario'");
       return $query->getQuery()->execute();
       } catch (\Exception $e) {
           throw new \Exception($e->getMessage(), $e->getCode());
@@ -81,10 +81,10 @@ class FuncionarioController extends RESTController
     {
         try {
             $funcionario = new Funcionario();
-            $funcionario->NomeFuncionario = $this->di->get('request')->getPost('NomeFuncionario');
-            $funcionario->CpfFuncionario = $this->di->get('request')->getPost('CpfFuncionario');
-            $funcionario->DtNascFuncionario = $this->di->get('request')->getPost('DtNascFuncionario');
-            $funcionario->DtInicioFuncionario = $this->di->get('request')->getPost('DtInicioFuncionario');
+            $funcionario->nomeFuncionario = $this->di->get('request')->getPost('nomeFuncionario');
+            $funcionario->cpfFuncionario = $this->di->get('request')->getPost('cpfFuncionario');
+            $funcionario->dtNascFuncionario = $this->di->get('request')->getPost('dtNascFuncionario');
+            $funcionario->dtInicioFuncionario = $this->di->get('request')->getPost('dtInicioFuncionario');
 
             $funcionario->saveDB();
 
@@ -113,13 +113,13 @@ class FuncionarioController extends RESTController
 
             $put = $this->di->get('request')->getPut();
 
-            $funcionario->NomeFuncionario = isset($put['NomeFuncionario']) ? $put['NomeFuncionario'] : $funcionario->NomeFuncionario;
+            $funcionario->nomeFuncionario = isset($put['nomeFuncionario']) ? $put['nomeFuncionario'] : $funcionario->nomeFuncionario;
 
-            $funcionario->CpfFuncionario = isset($put['CpfFuncionario']) ? $put['CpfFuncionario'] : $funcionario->CpfFuncionario;
+            $funcionario->cpfFuncionario = isset($put['cpfFuncionario']) ? $put['cpfFuncionario'] : $funcionario->cpfFuncionario;
 
-            $funcionario->DtNascFuncionario = isset($put['DtNascFuncionario']) ? $put['DtNascFuncionario'] : $funcionario->DtNascFuncionario;
+            $funcionario->dtNascFuncionario = isset($put['dtNascFuncionario']) ? $put['dtNascFuncionario'] : $funcionario->dtNascFuncionario;
 
-            $funcionario->DtInicioFuncionario = isset($put['DtInicioFuncionario']) ? $put['DtInicioFuncionario'] : $funcionario->DtInicioFuncionario;
+            $funcionario->dtInicioFuncionario = isset($put['dtInicioFuncionario']) ? $put['dtInicioFuncionario'] : $funcionario->dtInicioFuncionario;
 
             $funcionario->saveDB();
 

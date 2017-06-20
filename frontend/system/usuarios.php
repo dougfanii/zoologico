@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Projeto Frontend</title>
-        <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/estilo.css">
-    </head>
-    <body>
-      <?php
-        include "../header.php";
-      ?>
-
           <div id="app" class="container conteudo">
             <h1>Cadastro de Usuários</h1>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Nome do funcionário</label>
+                        <label>Login</label>
                         <input class="form-control input-sm" data-bind="textInput: name">
                     </div>
                     <div class="form-group">
-                        <label>Endereço do zoológico</label>
+                        <label>Senha</label>
+                        <input class="form-control input-sm" data-bind="textInput: address">
+                    </div>
+                    <div class="form-group">
+                        <label>Permissão</label>
                         <input class="form-control input-sm" data-bind="textInput: address">
                     </div>
                     <button class="btn btn-info btn-sm pull-left" data-bind="click: addZoo">Cadastrar</button>
@@ -31,13 +22,13 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Zoos Cadastrados
+                            Usuários Cadastrados
                         </div>
                         <table class="table table-bordered tableZoos">
                           <thead>
                             <tr>
-                              <th class="tableCollumns">Nome</th>
-                              <th class="tableCollumns">Endereço</th>
+                              <th class="tableCollumns">Login</th>
+                              <th class="tableCollumns">Senha</th>
                               <th class="acoes">Ações</th>
                             </tr>
                           </thead>
@@ -62,9 +53,3 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="assets/vendor/jquery/jquery.js"></script>
-        <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/vendor/knockout/knockout.js"></script>
-        <script type="text/javascript" src="assets/js/zoologico.js"></script>
-    </body>
-</html>

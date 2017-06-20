@@ -12,16 +12,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="/">Home</a></li>
-        <li><a href="index.php?page=system/zoologicos.php">Zoológicos</a></li>
+        <!-- <li><a href="index.php?page=system/zoologicos.php">Zoológicos</a></li> -->
         <!-- <li><a href="#contact">Contact</a></li> -->
-        <!-- <li class="dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastros<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="index.php?page=system/zoologicos.php">Zoológicos</a></li>
-            <li><a href='index.php?page=system/usuarios.php'>Usuários</a></li>
-            <li><a href='index.php?page=system/funcionarios.php'>Funcionários</a></li>
+            <li><a href='index.php?page=zoologicos'>Zoológicos</a></li>
+            <li><a href='index.php?page=usuarios'>Usuários</a></li>
+            <li><a href='index.php?page=funcionarios'>Funcionários</a></li>
           </ul>
-        </li> -->
+        </li>
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Animais<span class="caret"></span></a>
           <ul class="dropdown-menu">
