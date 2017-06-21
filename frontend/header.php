@@ -22,14 +22,14 @@
             <li><a href='index.php?page=funcionarios'>Funcionários</a></li>
           </ul>
         </li>
-        <!-- <li class="dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Animais<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="index.php?page=system/animais.php">Animais</a></li>
-            <li><a href="index.php?page=system/especies.php">Espécies</a></li>
-            <li><a href="index.php?page=system/recintos.php">Recintos</a></li>
+            <li><a href="index.php?page=animais">Animais</a></li>
+            <li><a href="index.php?page=especies">Espécies</a></li>
+            <li><a href="index.php?page=recintos">Recintos</a></li>
           </ul>
-        </li> -->
+        </li>
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visitante<span class="caret"></span></a>
           <ul class="dropdown-menu">

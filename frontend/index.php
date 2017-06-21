@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Projeto Frontend</title>
         <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="assets/css/estilo.css">
     </head>
     <body>
@@ -30,6 +31,7 @@
         <script type="text/javascript" src="assets/vendor/jquery/jquery.js"></script>
         <script type="text/javascript" src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="assets/vendor/knockout/knockout.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <?php
           $jsFile = 'assets/js/'.$_GET['page'].'.js';
           if (file_exists($jsFile)){

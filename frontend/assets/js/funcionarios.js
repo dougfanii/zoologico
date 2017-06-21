@@ -9,10 +9,27 @@ var Funcionarios = function(objFunc){
   self.nomeFuncionario = ko.observable(objFunc.nomeFuncionario);
   self.dtNascFuncionario = ko.observable(objFunc.dtNascFuncionario);
   self.dtInicioFuncionario = ko.observable(objFunc.dtInicioFuncionario);
+  // self.editingField = ko.observableArray([
+  //   { turn: false, key: '', value: '' }
+  // ]);
   self.editingCpf = ko.observable(false);
   self.editingName = ko.observable(false);
   self.editingDateBirth = ko.observable(false);
   self.editingDateAdmission = ko.observable(false);
+  //
+  // self.editingField.subscribe(function(editingField){
+  //   if(editingField[turn] == false){
+  //     $.ajax({
+  //       url: window.global.urlapi + '/v1/funcionarios/' + self.cdFuncionario(),
+  //       type: 'PUT',
+  //       data: {
+  //         editingField[key]: editingField[value]
+  //       },
+  //       success: function(result){
+  //       }
+  //     });
+  //   }
+  // })
 
   self.editingCpf.subscribe(function(editingCpf){
     if(editingCpf == false){
@@ -29,6 +46,50 @@ var Funcionarios = function(objFunc){
     }
   })
 
+  self.editingName.subscribe(function(editingName){
+    if(editingName == false){
+      console.log(self.nomeFuncionario());
+      $.ajax({
+        url: window.global.urlapi + '/v1/funcionarios/' + self.cdFuncionario(),
+        type: 'PUT',
+        data: {
+          nomeFuncionario: self.nomeFuncionario()
+        },
+        success: function(result){
+        }
+      });
+    }
+  })
+
+  self.editingDateBirth.subscribe(function(editingDateBirth){
+    if(editingDateBirth == false){
+      $.ajax({
+        url: window.global.urlapi + '/v1/funcionarios/' + self.cdFuncionario(),
+        type: 'PUT',
+        data: {
+          dtNascFuncionario: self.dtNascFuncionario()
+        },
+        success: function(result){
+        }
+      });
+    }
+  })
+
+  self.editingDateAdmission.subscribe(function(editingDateAdmission){
+    if(editingDateAdmission == false){
+      $.ajax({
+        url: window.global.urlapi + '/v1/funcionarios/' + self.cdFuncionario(),
+        type: 'PUT',
+        data: {
+          dtInicioFuncionario: self.dtInicioFuncionario()
+        },
+        success: function(result){
+        }
+      });
+    }
+  })
+
+
   self.enterEditName = function(viewModel, e){
     if(e.keyCode === 13){
       self.editingName(false);
@@ -38,6 +99,10 @@ var Funcionarios = function(objFunc){
 }
 
 /* FIM DA CLASSE FUNCIONARIOS */
+
+
+/* Exibir aviso de que não há registros no banco */
+
 
 
  /* INÍCIO DA ViewModel */
@@ -50,6 +115,16 @@ function AppViewModel(){
   self.name = ko.observable();
   self.dateBirth = ko.observable();
   self.dateAdmission = ko.observable();
+  self.showEmpty = ko.observable(false);
+  
+
+  self.funcionarios.subscribe(function(){
+    if(self.funcionarios().length < 1 || self.funcionarios() == undefined){
+      self.showEmpty(true);
+      return;
+    }
+    self.showEmpty(false);
+  })
 
   /* GET API */
 
@@ -65,7 +140,9 @@ function AppViewModel(){
     success: function(result){
       if(!$.isEmptyObject(result.records)){
         self.setData(result.records);
+        return;
       }
+      self.showEmpty(true);
     }
   });
 
@@ -91,6 +168,18 @@ function AppViewModel(){
 
   self.editCpf = function(funcionario){
     funcionario.editingCpf(true);
+  };
+
+  self.editName = function(funcionario){
+    funcionario.editingName(true);
+  };
+
+  self.editDateBirth = function(funcionario){
+    funcionario.editingDateBirth(true);
+  };
+
+  self.editDateAdmission = function(funcionario){
+    funcionario.editingDateAdmission(true);
   };
 
 /* DELETE */

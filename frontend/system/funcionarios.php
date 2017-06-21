@@ -44,26 +44,27 @@
             <th class="acoes">Ações</th>
           </tr>
         </thead>
-        <!-- <tr data-bind="visible: naoMostrar()">
-          <td colspan="3">Não há registros cadastrados></td>
-        </tr> -->
+        <tr data-bind="visible: showEmpty">
+          <td colspan="6" align='center'>Não há zoológicos cadastrados</td>
+        </tr>
         <tbody data-bind="foreach: funcionarios">
           <tr>
             <td>
               <div data-bind="visible: !editingCpf(), text: cpfFuncionario, click: $root.editCpf"></div>
               <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingCpf, value: cpfFuncionario, hasFocus: editingCpf"/>
+              <!-- <input id = "cpfFuncionario" type="text" class="form-control input-sm inputTable" data-bind="attr {id: cpfFuncionario}, visible: editingField[turn], value: cpfFuncionario, hasFocus: editingField"/> -->
             </td>
             <td>
-             <div data-bind="text: nomeFuncionario"></div>
-              <!-- <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/> -->
+             <div data-bind="visible: !editingName(), text: nomeFuncionario, click: $root.editName"></div>
+              <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeFuncionario, hasFocus: editingName"/>
               </td>
             <td>
-              <div data-bind="text: dtNascFuncionario"></div>
-              <!-- <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/> -->
+              <div data-bind="visible: !editingDateBirth(), text: dtNascFuncionario, click: $root.editDateBirth"></div>
+              <input type="date" class="form-control input-sm inputTable" data-bind="visible: editingDateBirth, value: dtNascFuncionario, hasFocus: editingDateBirth"/>
             </td>
             <td>
-              <div data-bind="text: dtInicioFuncionario"></div>
-              <!-- <input type="text" class="form-control input-sm inputTable" data-bind="visible: editingName, value: nomeZoo, hasFocus: editingName, event: {keyup: enterEditName}"/> -->
+              <div data-bind="visible: !editingDateAdmission(), text: dtInicioFuncionario, click: $root.editDateAdmission"></div>
+              <input type="date" class="form-control input-sm inputTable" data-bind="visible: editingDateAdmission, value: dtInicioFuncionario, hasFocus: editingDateAdmission"/>
             </td>
             <!-- <td>
               <div data-bind="visible: !editingAddress(), text: enderecoZoo, click: $root.editAddress"></div>
