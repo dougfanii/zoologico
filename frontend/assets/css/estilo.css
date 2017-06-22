@@ -83,3 +83,26 @@
 .funcField{
   width: 500px;
 }
+
+.radPermissao{
+  background-color: darkgray;
+  border-color: lightgray;
+  border: 0;
+}
+
+.radPermissao:hover{
+  background-color: #5FB644;
+  border-color: lightgray;
+}
+
+label.btn.btn-primary.radPermissao.active{
+  background-color: #5FB644;
+}
+label.btn.btn-primary.radPermissao:active{
+  background-color: #5FB644;
+}
+
+label.btn.btn-primary.radPermissao.active.focus{
+  background-color: #55A13E;
+  outline:none;
+}

@@ -21,15 +21,22 @@ class UsuarioController extends RESTController
      */
     public function getUsuarios()
     {
+      // var_dump('true' . $this->getConditions());
+      // exit();
       try {
       $query = new \Phalcon\Mvc\Model\Query\Builder();
       $query->addFrom('\App\Zoos\Models\Usuario', 'Usuario')
         ->columns(
             [
-              'Usuario.*'
+              'Usuario.idUsuario',
+              'Usuario.loginUsuario',
+              'Usuario.senhaUsuario',
+              'Usuario.permissaoUsuario',
+              'Usuario.Funcionario_cdFuncionario',
+              'Funcionario.cdFuncionario'
             ]
           )
-          ->limit($this->partialFields)
+          ->innerJoin('\App\Zoos\Models\Funcionario', 'Usuario.Funcionario_cdFuncionario = Funcionario.cdFuncionario', 'Funcionario')
           ->where('true' . $this->getConditions());
         return $query->getQuery()->execute();
       } catch (\Exception $e) {
@@ -86,9 +93,10 @@ class UsuarioController extends RESTController
     {
         try {
             $usuario = new Usuario();
-            $usuario->LoginUsuario = $this->di->get('request')->getPost('LoginUsuario');
-            $usuario->SenhaUsuario = $this->di->get('request')->getPost('SenhaUsuario');
-            $usuario->PermissaoUsuario = $this->di->get('request')->getPost('PermissaoUsuario');
+            $usuario->loginUsuario = $this->di->get('request')->getPost('loginUsuario');
+            $usuario->senhaUsuario = $this->di->get('request')->getPost('senhaUsuario');
+            $usuario->permissaoUsuario = $this->di->get('request')->getPost('permissaoUsuario');
+            $usuario->Funcionario_cdFuncionario = $this->di->get('request')->getPost('Funcionario_cdFuncionario');
 
             $usuario->saveDB();
 
@@ -117,11 +125,13 @@ class UsuarioController extends RESTController
 
             $put = $this->di->get('request')->getPut();
 
-            $usuario->LoginUsuario = isset($put['LoginUsuario']) ? $put['LoginUsuario'] : $usuario->LoginUsuario;
+            $usuario->loginUsuario = isset($put['LoginUsuario']) ? $put['LoginUsuario'] : $usuario->loginUsuario;
 
-            $usuario->SenhaUsuario = isset($put['SenhaUsuario']) ? $put['SenhaUsuario'] : $usuario->SenhaUsuario;
+            $usuario->senhaUsuario = isset($put['SenhaUsuario']) ? $put['SenhaUsuario'] : $usuario->senhaUsuario;
 
-            $usuario->PermissaoUsuario = isset($put['PermissaoUsuario']) ? $put['PermissaoUsuario'] : $usuario->PermissaoUsuario;
+            $usuario->permissaoUsuario = isset($put['PermissaoUsuario']) ? $put['PermissaoUsuario'] : $usuario->permissaoUsuario;
+
+            $usuario->Funcionario_cdFuncionario = isset($put['Funcionario_cdFuncionario']) ? $put['Funcionario_cdFuncionario'] : $usuario->Funcionario_cdFuncionario;
 
             $usuario->saveDB();
 
